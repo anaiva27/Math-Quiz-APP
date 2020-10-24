@@ -26,18 +26,22 @@ function startTime() {
     main.classList.remove("hide");
 
     countDown();
-    function countDown() {
-        interval = setInterval(function() {
-            if (timeLeft <= 0) {
-                clearInterval(timeLeft = 0);
-                scorePage();
-            } else {
+
+    showQuestion(questions[0]);
+}
+
+var interval;
+
+function countDown() {
+    interval = setInterval(function () {
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            scorePage();
+        } else {
             timeLeftDisplay.innerHTML = timeLeft;
             timeLeft -= 1;
-            }
-        }, 1000)
-    }
-    showQuestion(questions[0]);
+        }
+    }, 1000)
 }
 
 function showQuestion() {
@@ -55,17 +59,18 @@ function showQuestion() {
 
 function answerCheck() {
     var questionAnswered = this.getAttribute("data-index");
-    if (questionAnswered != questions[trackQuestion-1].correct) {
+    console.log(this);
+    if (questionAnswered != questions[trackQuestion - 1].correct) {
         timeLeft -= 10;
         ansCheck.textContent = "Wrong!";
-        ansCheck.setAttribute("style","display:block");
-        setTimeout(function(){ansCheck.setAttribute("style","display:none")}, 800);
+        ansCheck.setAttribute("style", "display:block");
+        setTimeout(function () { ansCheck.setAttribute("style", "display:none") }, 800);
         showQuestion();
     }
     else {
         ansCheck.textContent = "Correct!";
-        ansCheck.setAttribute("style","display:block");
-        setTimeout(function(){ansCheck.setAttribute("style","display:none")}, 800);
+        ansCheck.setAttribute("style", "display:block");
+        setTimeout(function () { ansCheck.setAttribute("style", "display:none") }, 800);
         showQuestion();
     }
 }
@@ -74,35 +79,72 @@ function scorePage() {
     main.classList.add("hide");
     endGame.classList.remove("hide");
     finalScore.textContent = timeLeft;
-    // window.location.assign("./score.html");
+    clearInterval(interval);
 }
 
 var questions = [
     {
         question: "How much is 2+2",
         answers: [
-            "4", "22", "7", "5"],
+            "4", "24", "0", "6"],
         correct: "4",
     },
     {
         question: "How much is 22+2",
         answers: [
-            "4", "24", "7", "5"
+            "4", "24", "0", "6"
         ],
         correct: "24",
     },
     {
         question: "How much is 2-2",
         answers: [
-            "4", "22", "0", "5"
+            "4", "24", "0", "6"
         ],
         correct: "0",
     },
     {
         question: "How much is 2+4",
         answers: [
-            "6", "22", "7", "5"
+            "4", "24", "0", "6"
         ],
         correct: "6",
     }
 ]
+
+var saveScore = document.querySelector("#save");
+//save score function
+saveScore.addEventListener("click", function (event) {
+    event.preventDefault();
+    saveHighScore();
+});
+
+ function saveHighScore() {
+
+    //get the value of input box - intital
+    var userInitials = document.querySelector("#init").value.trim();
+
+    //check to make sure the value is not empty
+    if (userInitials !== "") {
+        //get the saved data from local storage [{initial: "name", score: "4"},{}]
+        //array
+        var localData = JSON.parse(window.localStorage.getItem("data")) || [];
+
+        //store updated data to the local storage//
+        //create new data
+        var userScore = finalScore.textContent;
+        var newData = {
+            initial: userInitials,
+            score: userScore
+        }
+        //add new data
+        localData.push(newData);
+
+        //store it
+        window.localStorage.setItem("data", JSON.stringify(localData));
+
+        //redirect user
+        window.location.href = "score.html"
+    }
+
+}
