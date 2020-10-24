@@ -1,0 +1,42 @@
+* {box-sizing: border-box;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-grid {
+    display: grid;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.btn { background-color: #4B088A;
+    color: white;
+    border-radius: 4px;
+}
+
+.btn:hover {background-color: #4B3353;
+}
+
+.btn:focus { outline: none;
+    box-shadow: none;
+  }
+
+.countdown { padding: 20px;
+}
+
+.hide {
+    display: none;
+}
+
+.control {  background-color: white;
+    text-align: center;
+}
+

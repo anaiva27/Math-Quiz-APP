@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+
+    <div>Time left: <span id="time-left">75</span></div>
+
+    <div class="container">
+        <div id="begin" class="control">
+            <h1>Math Quiz Challenge</h1>
+            <p>Try to answer the following math-related question withit the time limit.<br>Keep in mind
+                that incorrect answers will penalize your ScoreTime by 10 seconds</p>
+            <button id="start-button" class="start-btn btn">Start</button>
+        </div>
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn" id="btn1" data-index="4">Answer 1</button>
+                <button class="btn" id="btn2" data-index="24">Answer 2</button>
+                <button class="btn" id="btn3" data-index="0">Answer 3</button>
+                <button class="btn" id="btn4" data-index="6">Answer 4</button>
+            </div>
+            <p id="answer-check"></p>
+
+        </div>
+        <div id="end-game" class="hide">
+            <h2>Congratulations!</h2>
+             <p>Your final score is: <span id="final-score">0</span></p>
+            <label for="init">Enter your initials: </label>
+             <input type="text" id="init" name="init">
+             <button id="save" class="start-btn btn">Save</button>
+             </div>
+         </div>
+    </div>
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
