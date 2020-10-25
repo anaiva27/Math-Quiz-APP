@@ -4,30 +4,15 @@ var clearScores = document.querySelector("#clear-scores");
 var savedUserScores = document.querySelector("#saved-highscores");
 
 goBack.addEventListener("click", restart);
-function restart(){;
-    document.location="index.html"
-}
-
-// geting data from storage
 var savedHighScores = JSON.parse(localStorage.getItem("data"));
 
-clearScores.addEventListener("click", clearScore);
-function clearScore() {
-    localStorage.clear();
-    savedHighScores = JSON.parse(localStorage.getItem("data"));
-    renderScores();
-}
-
-// putting info on the screen
+// putting data on the screen
 function renderScores() {
       if (savedHighScores) {
         for (var i = 0; i < savedHighScores.length; i++) {
             var pText = savedHighScores[i].initial + " " + " " + savedHighScores[i].score;
-
-            console.log(pText);
             var highScoreItem = savedHighScores[i];
             var p = document.createElement("p");
-
             p.textContent = pText;
             savedUserScores.appendChild(p);
         }
@@ -38,3 +23,15 @@ function renderScores() {
 
 renderScores();
 
+// restart the quiz
+function restart(){;
+    document.location="index.html"
+}
+
+// clear the scores
+clearScores.addEventListener("click", clearScore);
+function clearScore() {
+    localStorage.clear();
+    savedHighScores = JSON.parse(localStorage.getItem("data"));
+    renderScores();
+}

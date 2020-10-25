@@ -1,6 +1,6 @@
 * {box-sizing: border-box;
 }
-
+/* styles for the main container*/
 .container {
     padding: 0;
     margin: 0;
@@ -11,6 +11,7 @@
     align-items: center;
 }
 
+ /* styles for buttons */
 .btn-grid {
     display: grid;
     gap: 5px;
@@ -29,6 +30,7 @@
     box-shadow: none;
   }
 
+  /* styles for quiz conyainer and timer*/
 .countdown { padding: 20px;
 }
 

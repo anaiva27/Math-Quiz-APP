@@ -56,6 +56,7 @@ function showQuestion() {
         btn3.textContent = questions[trackQuestion].answers[2];
         btn4.textContent = questions[trackQuestion].answers[3];
         trackQuestion++;
+        console.log(trackQuestion);
     }
 }
 
@@ -109,7 +110,7 @@ var questions = [
         correct: "0",
     },
     {
-        question: "How much is 2+4",
+        question: "How much is 4+2",
         answers: [
             "4", "24", "0", "6"
         ],
@@ -125,7 +126,7 @@ saveScore.addEventListener("click", function (event) {
 });
 
 // storig updated data to the local storage
- function saveHighScore() {
+function saveHighScore() {
     var userInitials = document.querySelector("#init").value.trim();
     if (userInitials !== "") {
         var localData = JSON.parse(window.localStorage.getItem("data")) || [];
