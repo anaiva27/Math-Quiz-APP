@@ -7,13 +7,15 @@
     <title>Quiz App</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-
 </head>
 
 <body>
-
-    <div>Time left: <span id="time-left">75</span></div>
-
+    <!-- countdown timer and link to score board -->
+    <div>Time left: <span id="time-left">75</span>
+        <br>
+        <a href="score.html">Score Card</a>
+    </div>
+    <!-- main body of the application -->
     <div class="container">
         <div id="begin" class="control">
             <h1>Math Quiz Challenge</h1>
@@ -21,6 +23,7 @@
                 that incorrect answers will penalize your ScoreTime by 10 seconds</p>
             <button id="start-button" class="start-btn btn">Start</button>
         </div>
+        <!-- hidden container with questions and answers, to be revealed after the start button is clicked -->
         <div id="question-container" class="hide">
             <div id="question">Question</div>
             <div id="answer-buttons" class="btn-grid">
@@ -30,8 +33,8 @@
                 <button class="btn" id="btn4" data-index="6">Answer 4</button>
             </div>
             <p id="answer-check"></p>
-
         </div>
+        <!-- hidden container with the final score of the current game, to be revealed after the game is over -->
         <div id="end-game" class="hide">
             <h2>Congratulations!</h2>
             <p>Your final score is: <span id="final-score">0</span></p>
@@ -42,8 +45,7 @@
     </div>
     </div>
 
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+// declaring global variables
 var startBTN = document.querySelector("#start-button");
 var main = document.querySelector("#question-container");
 var endGame = document.querySelector("#end-game");
@@ -9,18 +10,18 @@ var btn2 = document.querySelector("#btn2");
 var btn3 = document.querySelector("#btn3");
 var btn4 = document.querySelector("#btn4");
 var ansCheck = document.querySelector("#answer-check");
-
-btn1.addEventListener("click", answerCheck);
-btn2.addEventListener("click", answerCheck);
-btn3.addEventListener("click", answerCheck);
-btn4.addEventListener("click", answerCheck);
-
 var timeLeftDisplay = document.querySelector("#time-left");
 var timeLeft = 75;
 var trackQuestion = 0;
 
+// actions for buttons
+btn1.addEventListener("click", answerCheck);
+btn2.addEventListener("click", answerCheck);
+btn3.addEventListener("click", answerCheck);
+btn4.addEventListener("click", answerCheck);
 startBTN.addEventListener("click", startTime);
 
+// starting quiz, removing and adding parameter display:none for certain containers
 function startTime() {
     begin.classList.add("hide");
     main.classList.remove("hide");
@@ -30,8 +31,8 @@ function startTime() {
     showQuestion(questions[0]);
 }
 
+// timer starts
 var interval;
-
 function countDown() {
     interval = setInterval(function () {
         if (timeLeft <= 0) {
@@ -44,6 +45,7 @@ function countDown() {
     }, 1000)
 }
 
+// picking questions and answers from the array
 function showQuestion() {
     if (trackQuestion == questions.length) {
         scorePage();
@@ -57,6 +59,7 @@ function showQuestion() {
     }
 }
 
+// compairing users answers to correct answers
 function answerCheck() {
     var questionAnswered = this.getAttribute("data-index");
     console.log(this);
@@ -75,6 +78,7 @@ function answerCheck() {
     }
 }
 
+// end of the quiz, adding the time left to the scoreboard
 function scorePage() {
     main.classList.add("hide");
     endGame.classList.remove("hide");
@@ -82,6 +86,7 @@ function scorePage() {
     clearInterval(interval);
 }
 
+// array of objects with questions and answers
 var questions = [
     {
         question: "How much is 2+2",
@@ -112,38 +117,27 @@ var questions = [
     }
 ]
 
+// saving initials and score
 var saveScore = document.querySelector("#save");
-//save score function
 saveScore.addEventListener("click", function (event) {
     event.preventDefault();
     saveHighScore();
 });
 
+// storig updated data to the local storage
  function saveHighScore() {
-
-    //get the value of input box - intital
     var userInitials = document.querySelector("#init").value.trim();
-
-    //check to make sure the value is not empty
     if (userInitials !== "") {
-        //get the saved data from local storage [{initial: "name", score: "4"},{}]
-        //array
         var localData = JSON.parse(window.localStorage.getItem("data")) || [];
-
-        //store updated data to the local storage//
-        //create new data
         var userScore = finalScore.textContent;
         var newData = {
             initial: userInitials,
             score: userScore
         }
-        //add new data
         localData.push(newData);
-
-        //store it
         window.localStorage.setItem("data", JSON.stringify(localData));
 
-        //redirect user
+        //redirecting user
         window.location.href = "score.html"
     }
 
