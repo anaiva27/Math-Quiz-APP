@@ -93,28 +93,28 @@ var questions = [
         question: "How much is 2+2",
         answers: [
             "4", "24", "0", "6"],
-        correct: "4",
+        correct: "1",
     },
     {
         question: "How much is 22+2",
         answers: [
             "4", "24", "0", "6"
         ],
-        correct: "24",
+        correct: "2",
     },
     {
         question: "How much is 2-2",
         answers: [
             "4", "24", "0", "6"
         ],
-        correct: "0",
+        correct: "3",
     },
     {
         question: "How much is 4+2",
         answers: [
-            "4", "24", "0", "6"
+            "4", "6", "0", "24"
         ],
-        correct: "6",
+        correct: "2",
     }
 ]
 
